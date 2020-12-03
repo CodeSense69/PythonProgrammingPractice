@@ -1,3 +1,5 @@
+#GITHUB REPOSITORY UPDATE:
+
 #FINAL METHOD FOR REMOVING DOUBLES USING 2 FUNCTIONS:
 '''def first_double(s):
     for i in range(len(s)):
