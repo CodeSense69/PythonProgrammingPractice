@@ -309,3 +309,114 @@ for y in var:
     x+=distance_moved_in_x
 print(str(number_of_trees_hit)) '''
 
+'''CHECK THE EXAM:
+def check_exam(arr1,arr2):
+    score = 0
+    for i in range(len(arr1)):
+        if arr1[i]==arr2[i]:
+            score+=4
+        elif arr1[i]!=arr2[i] and arr2[i]!='':
+            score-=1
+        elif arr2[i]=='':
+            score+=0
+    if score<0:
+        score=0
+    return(score)'''
+
+'''def myfunction():
+    with open('nice.txt','r') as myfile:
+        filelineread = myfile.readlines()
+        for i in range(len(filelineread)):
+            filelineread[i]=filelineread[i].replace('\n','')
+        print(filelineread)
+myfunction()'''
+
+#AOC DAY 4:
+#PART 1:
+'''with open('aoc.txt','r') as myfile:
+        lines = myfile.read().split('\n\n')
+        for i in range(len(lines)):
+            lines[i]=lines[i].replace('\n',' ')
+count=0
+#required_fields = ['byr', 'iyr' ,'eyr', 'hgt' ,'hcl' ,'ecl' ,'pid', 'cid']
+number = 0
+print(lines)
+while True and number<len(lines)-1:
+    #for i in range(len(required_fields)):
+    if lines[number].count('byr')==1 and lines[number].count('iyr')==1 and lines[number].count('eyr')==1 and lines[number].count('hgt')==1 and lines[number].count('hcl')==1 and lines[number].count('ecl')==1 and lines[number].count('pid')==1 and lines[number].count('cid')==1:
+        count+=1
+        number+=1
+    if lines[number].count('byr')==1 and lines[number].count('iyr')==1 and lines[number].count('eyr')==1 and lines[number].count('hgt')==1 and lines[number].count('hcl')==1 and lines[number].count('ecl')==1 and lines[number].count('pid')==1:
+        count+=1
+        number+=1
+    else:
+        count+=0
+        number+=1
+print(count)'''
+#PART 2:
+'''count=0
+filelines = open('aoc.txt').read().split('\n\n')
+
+def hclconditions(var):
+  return(ord('0') <= ord(var) <= ord('9') or ord('a') <= ord(var) <= ord('f'))
+
+def passportvalidator(key,value):
+  if key == 'byr':
+    return(value.isnumeric() and 1920 <= int(value)  <= 2002)
+  if key == 'iyr':
+    return(value.isnumeric() and 2010 <= int(value)  <= 2020)
+  if key == 'eyr':
+    return(value.isnumeric() and 2020 <= int(value)  <= 2030)
+  if key == 'hgt':
+    if value[-2:] == 'cm':
+      return(value[:-2].isnumeric() and 150 <= int(value[:-2])  <= 193)
+    if value[-2:] == 'in':
+      return(value[:-2].isnumeric() and 59 <= int(value[:-2])  <= 76)
+  if key == 'hcl':
+    return(value[0] == '#' and all([hclconditions(value[i]) for i in range(1, len(value))]))
+  if key == 'ecl':
+    return(value in 'amb blu brn gry grn hzl oth'.split())
+  if key == 'pid':
+    return(len(value) == 9 and value.isnumeric())
+  if key == 'cid':
+    return True
+for variable in filelines:
+  d = {}
+  for y in variable.split():
+    a, b = y.split(':')
+    d[a] = b
+  #print([(passportvalidator(key, d[key]), key) for key in d])
+  if len(d) == 8 and all([passportvalidator(key, d[key]) for key in d]):
+    count += 1
+  elif len(d) == 7 and 'cid' not in d and all([passportvalidator(key, d[key]) for key in d]):
+    count += 1
+
+print(count)'''
+
+#REPLACE ALL INSTANCES OF FIND WITH REPLACE:
+'''def replace_all(obj, find, replace):
+    for i in range(len(obj)):
+        if obj[i]==find and type(obj[i])==int:
+            obj[i]=replace
+        elif type(obj)==str:
+            obj = obj.replace(find,replace)
+    return(obj)'''
+
+'''SORT MEN FROM BOYS:
+def men_from_boys(arr):
+    arr1=[]
+    arr2=[]
+    returnlist = []
+    for i in range(len(arr)):
+        if arr[i]%2==0:
+            arr1.append(arr[i])
+        elif arr[i]%2!=0:
+            arr2.append(arr[i])
+    arr1.sort(reverse=False)
+    arr2.sort(reverse=True)
+    arrnew = arr1+arr2
+    for i in range(len(arrnew)):
+        if arrnew[i] not in returnlist:
+            returnlist.append(arrnew[i])
+    return(returnlist)'''
+
