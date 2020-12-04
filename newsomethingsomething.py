@@ -420,3 +420,30 @@ def men_from_boys(arr):
             returnlist.append(arrnew[i])
     return(returnlist)'''
 
+#RULE OF DIVISIBILITY BY 13:
+#ALSO ONE OF THE MOST DISTURBING CODES I'VE COME UP WITH:
+'''def thirt(n):
+    generalset = [1,10,9,12,3,4]
+    n = list(str(n))[::-1]
+    for i in range(len(generalset)):
+        if len(n)>len(generalset):
+            extrageneralset = [int(n) for n in generalset[:len(n)-len(generalset)]]
+            generalset.extend(extrageneralset)
+    for i in range(len(n)):
+            n[i] = int(n[i])*int(generalset[i])
+    newsum = sum(n)
+    iternew = list(str(newsum))[::-1]
+    iternew = [int(iternew[i])*int(generalset[i]) for i in range(len(iternew))]
+    new = sum(iternew)
+    if new==newsum:
+        print(sum(n))
+    else:
+        n = list(str(new))[::-1]
+        n = [int(n[i])*int(generalset[i]) for i in range(len(n))]
+        if sum(n)==new:
+            print(new)
+        elif sum(n)!=new:
+            print(sum(n))
+    print(sum(n))
+thirt(101201920192012)'''
+
