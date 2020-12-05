@@ -447,3 +447,100 @@ def men_from_boys(arr):
     print(sum(n))
 thirt(101201920192012)'''
 
+#DAY 5 ADVENT OF CODE PART 1 AND 2:
+'''import collections
+
+with open("nice.txt") as f:
+    a = f.read().strip().split("\n")
+
+highestseat = -1
+seats = []
+for i in a:
+    mylineFB = "FBFBBFF"
+    mylineFB = i[0:7]
+    mylineFB = mylineFB.replace("F", "0")
+    mylineFB = mylineFB.replace("B", "1")
+    #print(mylineFB)
+    mylineFB = "0b" + mylineFB
+    mylineRL = i[7:]
+    mylineRL = mylineRL.replace("R", "1")
+    mylineRL = mylineRL.replace("L", "0")
+    seats.append((int(mylineFB, 2), int(mylineRL, 2)))
+b = (max(seats, key = lambda x: x[0]))
+
+print("part 1", b[0] * 8 + b[1])
+seats.sort()
+char = []
+for i in seats:
+    char.append((i[0] * 8 + i[1]))
+    #print(i)
+x = char[0]
+for i in range(1, len(char)):
+    if char[i] - 1 != x:
+        print("part 2", char[i] - 1)
+        break
+    x = char[i]'''
+
+#(OR)
+
+
+'''with open('nice.txt', 'r') as f:
+    boarding_passes = f.read().splitlines()
+
+def parse_seat_pos(board_pass: str) -> int:
+    limit = (0, 2 ** len(board_pass) - 1)
+    for step in board_pass:
+        split = sum(limit) // 2
+        lower, upper = limit
+        if step in 'FL':
+            limit = (lower, split)
+        else:
+            limit = (split+1, upper)
+    return limit[0]
+
+def seat_pos(board_pass: str) -> tuple[int, int]:
+    bp_row, bp_col = board_pass[:7], board_pass[7:]
+    row, col = parse_seat_pos(bp_row), parse_seat_pos(bp_col)
+    return row, col
+
+def seat_id(board_pass: str) -> int:
+    row, col = seat_pos(board_pass)
+    return row * 8 + col
+
+def find_missing(lst: list) -> int:
+    return next((x for x in range(lst[0], lst[-1]+1) if x not in lst))
+
+if __name__ == '__main__':
+    taken_seat_ids = [seat_id(board_pass) for board_pass in boarding_passes]
+
+    print('Q1:', 'What is the highest seat ID on a boarding pass?')
+    print('A1:', max(taken_seat_ids))
+
+    print('Q2:', 'What is the ID of your seat?')
+    print('A2:', find_missing(sorted(taken_seat_ids)))'''
+
+'''INTRO TO LAMBDA'S THROUGH CALCULATING THROUGH FUNCTIONS ON CODEWARS:
+def zero(f = None): return 0 if not f else f(0)
+def one(f = None): return 1 if not f else f(1)
+def two(f = None): return 2 if not f else f(2)
+def three(f = None): return 3 if not f else f(3)
+def four(f = None): return 4 if not f else f(4)
+def five(f = None): return 5 if not f else f(5)
+def six(f = None): return 6 if not f else f(6)
+def seven(f = None): return 7 if not f else f(7)
+def eight(f = None): return 8 if not f else f(8)
+def nine(f = None): return 9 if not f else f(9)
+
+def plus(y): return lambda x: x+y
+def minus(y): return lambda x: x-y
+def times(y): return lambda  x: x*y
+def divided_by(y): return lambda  x: x//y'''
+
+'''PROGRAM FOR VALID SPACING:
+def valid_spacing(s):
+    if s.strip()==s:
+        return(all(s.strip().split(' ' , len(s.split())-1)[i].count(' ')!=1 for i in range(len(s.strip().split(' ' , 1)))))
+    else:
+        return(False)
+valid_spacing('XLiB e H')'''
+
