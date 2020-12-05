@@ -544,3 +544,13 @@ def valid_spacing(s):
         return(False)
 valid_spacing('XLiB e H')'''
 
+#(OR)
+
+#PROGRAM FOR VALID SPACING:
+'''def valid_spacing(s):
+    if s.strip()==s:
+        print(all(s.strip().split(' ' , len(s.split())-1)[i].count(' ')!=1 and s.strip().split(' ' , len(s.split())-1)[i].count(' ')!=2 for i in range(len(s.strip().split()))))
+    else:
+        print(False)
+valid_spacing('UKZ DWFP')'''
+
