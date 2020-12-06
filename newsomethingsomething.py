@@ -554,3 +554,30 @@ valid_spacing('XLiB e H')'''
         print(False)
 valid_spacing('UKZ DWFP')'''
 
+#AOC DAY 6
+'''PART 1:  
+with open('nice.txt','r') as myfile:
+    myfile = myfile.read().split('\n\n')
+    myfile = [myfile[i].replace('\n' , '') for i in range(len(myfile))]
+    for i in range(len(myfile)):
+        myfile[i]=len(set(myfile[i]))
+    print('The sum is : ' + str(sum(myfile)))'''
+'''counter1 = 0
+counter2 = 0
+PART 1 AND PART 2:
+for item in open('nice.txt').read().split('\n\n'):
+      splitstring = item.split('\n')
+      emptylist = {}
+      for line in splitstring:
+        for char in line:
+          if char not in emptylist:
+            emptylist[char] = 0
+          emptylist[char] += 1
+      counter1 += len(emptylist)
+      for key in emptylist:
+        if emptylist[key] == len(splitstring):
+          counter2 += 1
+
+print('Part 1', counter1)
+print('Part 2', counter2)'''
+
