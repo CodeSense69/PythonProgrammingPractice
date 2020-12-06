@@ -581,3 +581,24 @@ for item in open('nice.txt').read().split('\n\n'):
 print('Part 1', counter1)
 print('Part 2', counter2)'''
 
+#PASCALS TRIANGLE:
+'''def pascals_triangle(n):
+    flatlist = []
+    arr = [[0 for x in range(n)] for y in range(n)] 
+    for counter in range (0, n): 
+        for i in range (0, counter + 1):
+            if i==0 or i==counter:
+                arr[counter][i] = 1
+            else: 
+                arr[counter][i] = (arr[counter - 1][i - 1] + 
+                                arr[counter - 1][i])
+    for i in range(len(arr)):
+        for j in range(len(arr[i])):
+            flatlist.append(str(arr[i][j]))
+    while '0' in flatlist:
+        flatlist.remove('0')
+    for i in range(len(flatlist)):
+        flatlist[i]=int(flatlist[i])
+    print(flatlist)
+pascals_triangle(6)'''
+
