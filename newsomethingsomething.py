@@ -602,3 +602,56 @@ print('Part 2', counter2)'''
     print(flatlist)
 pascals_triangle(6)'''
 
+''' AOC DAY 7 PART 1 AND 2:
+
+with open('nice.txt' , 'r') as myfile:
+    lines = myfile.read().split('\n')
+#print(lines)
+gold_as_bag = {}
+gold_as_sub_bag = {}
+emptydict = {}
+
+def counter_value(list_chosen, element_required):
+  if element_required in emptydict:
+    return(emptydict[element_required])
+  counter = 1
+  if element_required not in list_chosen:
+    list_chosen[element_required] = []
+  for number,alphabetical_part in list_chosen[element_required]:
+    counter += number * counter_value(list_chosen, alphabetical_part)
+  emptydict[element_required] = counter
+  return(counter)
+
+for line in lines:
+  line = line.replace('.', '')
+  #print(line)
+  a, b = line.split(' bags contain ')
+  #print(a)
+  #print(b)
+  parts = b.split(',')
+  #print(parts)
+  for part in parts:
+    part = part.strip()
+    if part == 'no other bags':
+      continue
+    c, d = part.split(' ', 1)
+    c = int(c)
+    d = d.replace('bags', '').replace('bag', '').strip()
+    #print(c, d)
+    if a not in gold_as_bag:
+      gold_as_bag[a] = []
+    gold_as_bag[a].append((c, d))
+    #print(gold_as_bag)
+    if d not in gold_as_sub_bag:
+      gold_as_sub_bag[d] =[]
+    gold_as_sub_bag[d].append((c, a))
+    #print(gold_as_sub_bag)
+
+counter_value(gold_as_sub_bag, 'shiny gold')
+#print(emptydict)
+print(len(emptydict) - 1)
+emptydict = {} #reset emptydict to be a empty dictionary
+print(counter_value(gold_as_bag, 'shiny gold') - 1)
+#counter_value(gold_as_bag , 'shiny gold')
+#print(emptydict)'''
+
