@@ -655,3 +655,56 @@ print(counter_value(gold_as_bag, 'shiny gold') - 1)
 #counter_value(gold_as_bag , 'shiny gold')
 #print(emptydict)'''
 
+#AOC DAY 8 PART 2:
+'''with open('nice.txt' , 'r') as myfile:
+    lines = myfile.read().split('\n')
+print(lines)
+
+def myfunction(which):
+  counter = 0
+  acc = 0
+  emptyset = set([])
+  while counter >= 0 and counter < len(lines):
+    (a, b) = lines[counter].split()
+    if counter == which and a == 'nop':
+      a = 'jmp'
+    if counter == which and a == 'jmp':
+      a = 'nop'
+    if counter in emptyset:
+      return None
+    emptyset.add(counter)
+    if a == 'acc':
+      acc += int(b)
+      counter += 1
+    elif a == 'jmp':
+      counter += int(b)
+    elif a == 'nop':
+      counter += 1
+  return acc
+
+for i in range(len(lines)):
+  ret = myfunction(i)
+  if ret is not None:
+    print(ret)'''
+
+#AOC DAY 8 PART 1
+'''with open('nice.txt' , 'r') as myfile:
+    lines = myfile.read().split('\n')
+print(lines)
+counter = 0
+acc = 0
+emptyset = set([])
+while counter >= 0 and counter < len(lines):
+  (a, b) = lines[counter].split()
+  if counter in emptyset:
+    print(acc)
+    exit(0)
+  emptyset.add(counter)
+  if a == 'acc':
+    acc += int(b)
+    counter += 1
+  elif a == 'jmp':
+    counter += int(b)
+  elif a == 'nop':
+    counter += 1'''
+
