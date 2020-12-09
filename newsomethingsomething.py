@@ -708,3 +708,40 @@ while counter >= 0 and counter < len(lines):
   elif a == 'nop':
     counter += 1'''
 
+#AOC DAY 9 PART 1:
+'''with open('nice.txt' , 'r') as myfile:
+    lines = myfile.read().split('\n')
+i=26
+mylist = []
+while True:
+    for z in range(i-25,i):
+        mylist.append(lines[z])
+    for x in range(len(mylist)):
+        for y in range(len(mylist)):
+            if int(lines[i])==int(mylist[x])+int(mylist[y]):
+                i+=1
+            else:
+                print(lines[i])
+    mylist = []'''
+#AOC DAY 9 PART 2:
+'''with open('nice.txt' , 'r') as myfile:
+    lines = myfile.read().split('\n')
+    lines = [int(lines[i]) for i in range(len(lines))]
+#print(lines)
+def sum_min_max_function():
+    a = 0
+    b = 1
+    s = lines[a]
+
+    while True:
+        if s == 257342611:
+            return min(lines[a:b]) + max(lines[a:b])
+        if s < 257342611:
+            s += lines[b]
+            b += 1
+        if s > 257342611:
+            s -= lines[a]
+            a += 1
+
+print('Part 2' , sum_min_max_function())'''
+
