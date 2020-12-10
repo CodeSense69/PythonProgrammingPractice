@@ -745,3 +745,35 @@ def sum_min_max_function():
 
 print('Part 2' , sum_min_max_function())'''
 
+
+#AOC DAY 10 PART 1 , 2: 
+'''with open('nice.txt' , 'r') as inputfile:
+    lines = inputfile.read().split('\n')
+#print(lines)
+lines = [int(x) for x in lines]
+lines.append(0)
+sortedlines = sorted(lines)
+sortedlines.append(max(sortedlines)+3)
+counter1 = 0
+counter2 = 0
+for i in range(len(sortedlines)-1):
+    difference = sortedlines[i+1] - sortedlines[i]
+    if difference==3:
+        counter2+=1
+    elif difference==1:
+        counter1+=1
+print('Part 1: ' + str(counter2*counter1))
+diff_combinations = {}
+def diffwaystosort(i):
+    if i==len(sortedlines)-1:
+        return(1)
+    if i in diff_combinations:
+        return(diff_combinations[i])
+    counter = 0
+    for j in range(i+1 , len(sortedlines)):
+        if sortedlines[j]-sortedlines[i]<=3:
+            counter += diffwaystosort(j)
+    diff_combinations[i] = counter
+    return(counter)
+print('Part 2: ' + str(diffwaystosort(0)))'''
+
