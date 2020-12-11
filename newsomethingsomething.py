@@ -777,3 +777,83 @@ def diffwaystosort(i):
     return(counter)
 print('Part 2: ' + str(diffwaystosort(0)))'''
 
+#AOC DAY 11 PART 2:
+'''with open('nice.txt') as file:
+    lines = file.read().split('\n')
+    #print(lines)
+def HowManyAdjacentOccupied(v,i,j):
+    counter = 0
+    coordinates = [ [-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1] ]
+    for x in coordinates:
+        dx = i+x[0]
+        dy = j+x[1]
+        while dx>=0 and dx<len(v) and dy>=0 and dy<92 and v[dx][dy]=='.':
+            dx+=x[0]
+            dy+=x[1]
+        #print(dx)
+        #print(dy)
+        if dx>=0 and dx<len(v) and dy>=0 and dy<92:
+            counter += (v[dx][dy] =='#')
+    return(counter)
+def TotalOccupants(v):
+    counter=0
+    for x in v:
+        counter+=x.count('#')
+    return(counter)
+for iterations in range(500):
+    nextiteration = []
+    for i in range(len(lines)):
+        string = ''
+        for j in range(len(lines[i])):
+            #print(lines[i])
+            character = lines[i][j]
+            if character !='.':
+                arrived_occupants = HowManyAdjacentOccupied(lines,i,j)
+                if character == 'L' and arrived_occupants ==0:
+                    character = '#'
+                elif character == '#' and arrived_occupants>=5:
+                    character = 'L'
+            string+=character
+        nextiteration.append(string)
+    lines = nextiteration
+    print('Part 2: ' + str(TotalOccupants(lines)))'''
+
+#AOC DAY 11 PART 1:
+'''with open('nice.txt') as file:
+    lines = file.read().split('\n')
+    #print(lines)
+def HowManyAdjacentOccupied(a,i,j):
+    counter = 0
+    coordinates = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]]
+    for x in coordinates:
+        dx = i+x[0]
+        dy = j+x[1]
+        #print(dx)
+        #print(dy)
+        if dx>=0 and dx<len(a) and dy>=0 and dy<92:
+            counter += (a[dx][dy] =='#')
+    return(counter)
+def TotalOccupants(a):
+    counter=0
+    for x in a:
+        counter+=x.count('#')
+    return(counter)
+for iterations in range(500):
+    nextiteration = []
+    for i in range(len(lines)):
+        string = ''
+        for j in range(len(lines[i])):
+            #print(lines[i])
+            character = lines[i][j]
+            if character !='.':
+                arrived_occupants = HowManyAdjacentOccupied(lines,i,j)
+                if character == 'L' and arrived_occupants ==0:
+                    character = '#'
+                elif character == '#' and arrived_occupants>=4:
+                    character = 'L'
+            string+=character
+        nextiteration.append(string)
+    lines = nextiteration
+    print('Part 1: ' + str(TotalOccupants(lines)))'''
+
+
