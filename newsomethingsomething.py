@@ -856,4 +856,60 @@ for iterations in range(500):
     lines = nextiteration
     print('Part 1: ' + str(TotalOccupants(lines)))'''
 
+#AOC DAY 12 PART 1 , 2:
+'''import math
+coordinates = [[1,0] , [0,-1] , [-1,0] , [0,1]]
+initial_position = [0,0]
+direction = 0
+with open('aoc.txt' , 'r') as myfile:
+    data = myfile.read().split('\n')
+for line in data:
+    command = line[0]
+    value = int(line[1:])
+    if command == 'N':
+        initial_position[1]+=value
+    elif command=='S':
+        initial_position[1]-= value
+    elif command == 'E':
+        initial_position[0]+=value
+    elif command=='W':
+        initial_position[0]-=value
+    elif command=='F':
+        initial_position[0]+=(value*coordinates[direction][0])
+        initial_position[1]+=(value*coordinates[direction][1])
+    else:
+        if command=="R":
+            direction+=(value//90)
+        else:
+            direction-=(value//90)
+        direction = direction % 4
+print('Part 1: ' + str(abs(initial_position[0])+abs(initial_position[1])))
+with open('aoc.txt' , 'r') as myfile:
+    data = myfile.read().split('\n')
+ship_position = [0,0]
+endpoint_position = [10,1]
+endpoint_direction = 0
+for line in data:
+    command = line[0]
+    value = int(line[1:])
+    if command == 'N':
+        endpoint_position[1]+=value
+    elif command=='S':
+        endpoint_position[1]-=value
+    elif command=='E':
+        endpoint_position[0]+=value
+    elif command=='W':
+        endpoint_position[0]-=value
+    elif command=='F':
+        ship_position[0]+=(value*endpoint_position[0])
+        ship_position[1]+=(value*endpoint_position[1])
+    else:
+        if command=="R":
+            value = 360-value
+        endpoint_direction+=value
+        endpoint_direction%=360
+        radians = math.radians(value)
+        endpoint_position = [round((endpoint_position[0] * math.cos(radians)) - (endpoint_position[1] * math.sin(radians))) , round((endpoint_position[0]*math.sin(radians)) + (endpoint_position[1]*math.cos(radians)))]
+print('Part 2: ' + str(abs(ship_position[0])+abs(ship_position[1])))'''
+
 
