@@ -912,4 +912,64 @@ for line in data:
         endpoint_position = [round((endpoint_position[0] * math.cos(radians)) - (endpoint_position[1] * math.sin(radians))) , round((endpoint_position[0]*math.sin(radians)) + (endpoint_position[1]*math.cos(radians)))]
 print('Part 2: ' + str(abs(ship_position[0])+abs(ship_position[1])))'''
 
+#AOC DAY 13 PART 1,2:
+'''from math import prod
+def parse_input(file):
+    with open(file, "r") as myfile:
+        lines = myfile.read().splitlines()
+        return int(lines[0]), lines[1].split(",")
+
+def calculate_distance(earliest_timestamp,i):
+    if earliest_timestamp%i == 0:
+        return(0)
+    else:
+        return(i*(earliest_timestamp//i+1)-earliest_timestamp)
+
+def part1(earliest_timestamp,ids):
+    idlist = list(map(int,filter(lambda x:x!="x",ids)))
+    closest_timestamp = [ids[0], calculate_distance(earliest_timestamp, idlist[0])]
+    for i in idlist[1:]:
+        current_distance = calculate_distance(earliest_timestamp, i)
+        if current_distance < closest_timestamp[1]:
+            closest_timestamp = [i, current_distance]
+    return(closest_timestamp[0]*closest_timestamp[1])
+
+#earliest_timestamp,ids = parse_input('nice.txt')
+#print("Part 1:" + str(part1(earliest_timestamp,ids)))
+
+def chinise_remainder_theorem(n, a):
+    sum=0
+    product=prod(n)
+    for i,j in zip(n, a):
+        p=product//i
+        sum += (j*mod_inverse_function(p, i)*p)
+    return(sum % product)
+
+def mod_inverse_function(a, b):
+    b0=b
+    (x0,x1) = (0,1)
+    if b==1:
+        return 1
+    while a>1:
+        q = a//b
+        (a,b) = ((b),(a % b))
+        (x0,x1) = ((x1-q*x0) , (x0))
+    if x1<0:
+        x1+=b0
+    return(x1)
+
+def part2(ids):
+    n = []
+    a = []
+    for (i,t) in enumerate(ids):
+        if t!="x":
+            n.append(int(t))
+            a.append(int(t)-i)
+    return(chinise_remainder_theorem(n, a))
+
+def main_function():
+    earliest_timestamp,ids = parse_input('nice.txt')
+    print(f"Part 1: {part1(earliest_timestamp, ids)} \nPart 2: {part2(ids)}")
+
+main_function()'''
 
