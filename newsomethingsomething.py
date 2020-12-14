@@ -973,3 +973,78 @@ def main_function():
 
 main_function()'''
 
+#AOC DAY 14 PART 1:
+'''with open('nice.txt' , 'r') as myfile:
+    lines = myfile.read().split('\n')
+#print(lines)
+mem = {}
+for line in lines:
+    if line.startswith('mask'):
+        mask = line.split()[-1]
+    else:
+        index,miscellaneous,value = line.split()
+        index = int(index.split('[')[-1][:-1])
+        value = int(value) #parsing_completed
+        new_value = 0 
+        for i,bit in enumerate(reversed(mask)):
+            value_of_bit = value&(2**i) #bitwise operator '&' (https://www.tutorialspoint.com/python/python_basic_operators.htm)
+            if bit=='X':
+                new_value+=value_of_bit
+            elif bit=='1':
+                new_value+=2**i
+            elif bit=='0':
+                pass
+            else:
+                pass
+            #print(value,bit)
+        mem[index]=new_value
+        #print(index,new_value)
+ans=0
+for value in mem.values():
+    ans+=value
+print(ans)
+#ans = 6559449933360'''
+
+#AOC DAY 14 PART 2:
+'''def indices(new_index,floating_values):
+    if len(floating_values)==0:
+        return([new_index])
+    else:
+        i=floating_values.pop(0)
+        ans = indices(new_index,list(floating_values)) + indices(new_index+2**i , list(floating_values))
+        return(ans)
+
+with open('nice.txt' , 'r') as myfile:
+    lines = myfile.read().split('\n')
+#print(lines)
+mem = {}
+for line in lines:
+    if line.startswith('mask'):
+        mask = line.split()[-1]
+    else:
+        if len(mask)==36:
+            index,miscellaneous,value = line.split()
+            index = int(index.split('[')[-1][:-1])
+            value = int(value)
+            new_index = 0
+            floating_values = []
+            for i,bit in enumerate(reversed(mask)):
+                index_bit = index&(2**i)
+                if bit=='X':
+                    floating_values.append(i)
+                elif bit=='1':
+                    new_index+=2**i
+                elif bit=='0':
+                    new_index+=index_bit
+                    pass
+                else:
+                    pass
+        for index2 in indices(new_index , list(floating_values)):
+            mem[index2] = value
+        #print(index2,new_index)
+ans=0
+for k,v in mem.items():
+    ans+=v
+print('Part 2: ' + str(ans))
+#ans = 3369767240513'''
+
