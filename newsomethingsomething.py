@@ -1048,3 +1048,54 @@ for k,v in mem.items():
 print('Part 2: ' + str(ans))
 #ans = 3369767240513'''
 
+#AOC DAY 15 PART 1,2:
+'''def get_index_positions(list_of_elems, element):
+    index_pos_list = []
+    index_pos = 0
+    while True:
+        try:
+            index_pos = list_of_elems.index(element, index_pos)
+            index_pos_list.append(index_pos)
+            index_pos += 1
+        except ValueError as e:
+            break
+    return(index_pos_list)
+
+starting_numbers = [6,13,1,15,2,0]
+
+def get_closest_index(myArr , myNumber):
+    return(min([ i for i in myArr if i < myNumber], key=lambda x:abs(x-myNumber)))
+
+new_number_index = len(starting_numbers)
+while len(starting_numbers)<=30000001:
+    if starting_numbers.count(starting_numbers[new_number_index-1])==1:
+        next = 0
+    else:
+        next = (new_number_index-1)-int(get_closest_index(get_index_positions(starting_numbers , starting_numbers[new_number_index-1]) , new_number_index-1))
+    #print(starting_numbers)
+    starting_numbers.append(next)
+    new_number_index+=1
+print(starting_numbers[29,999,999])'''
+
+#OPTIMIZED CODE AOC DAY 15:
+#PART 1,2
+'''list1 = [6,13,1,15,2,0]
+last_index = {}
+
+for counter,number in enumerate(list1):
+    if counter!=len(list1)-1:
+        last_index[number] = counter
+
+while len(list1) < 30000000:
+    previous_num = S[-1]
+    prev_prev = last_index.get(previous_num, -1)
+    last_index[previous_num] = len(list1)-1
+    if prev_prev == -1:
+        next = 0
+    else:
+        next=len(list1)-1-prev_prev
+    list1.append(next)
+    #if len(S) == 2020:
+        #print(next)
+print(list1[-1])'''
+
