@@ -1099,3 +1099,61 @@ while len(list1) < 30000000:
         #print(next)
 print(list1[-1])'''
 
+#AOC DAY 16 PART 1,2:
+#OPTIMIZED CODE:
+'''import re
+with open('nice.txt' , 'r') as myfile:
+    L = myfile.read().split('\n')
+#L = list(l.strip() for l in fileinput.input(files = 'nice.txt'))
+limits = []
+my_ticket = None
+other_tickets = []
+for l in L:
+    integers = [int(x) for x in re.findall('\d+', l)]
+    if len(integers) == 4:
+        limits.append(integers)
+    elif len(integers)>4:
+        if my_ticket is None:
+            my_ticket = integers
+        else:
+            other_tickets.append(integers)
+n = len(limits)
+n == 20
+part1 = 0
+ok_ = [[True for i in range(n)] for i in range(n)]
+for values in other_tickets:
+    assert len(values) == len(limits)
+    ticket_valid = True
+    for v in values:
+        valid = False
+        for a,b,c,d in limits:
+            if a<=v<=b or c<=v<=d:
+                valid = True
+        if not valid:
+            part1 += v
+            ticket_valid = False
+
+    if ticket_valid:
+        for i,v in enumerate(values):
+            for j,(a,b,c,d) in enumerate(limits):
+                if not (a<=v<=b or c<=v<=d):
+                    ok_[i][j] = False
+print(part1)
+map_ = [None for i in range(20)]
+used = [False for i in range(20)]
+found = 0
+while True:
+    for i in range(20):
+        valid_j = [j for j in range(20) if ok_[i][j] and not used[j]]
+        if len(valid_j) == 1:
+            map_[i] = valid_j[0]
+            used[valid_j[0]] = True
+            found += 1
+    if found == 20:
+        break
+#print(map_)
+part2 = 1
+for i,j in enumerate(map_):
+    if j<6:
+        part2 = part2*my_ticket[i]
+print(part2)'''
